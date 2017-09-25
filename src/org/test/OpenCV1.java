@@ -326,37 +326,48 @@ public class OpenCV1 {
         File archivo = new File(ruta);
         BufferedWriter bw = null;
         String temp = "";
+        int counter = 1;
         try{
             bw = new BufferedWriter(new FileWriter(archivo));
             
+            temp = "No. de Firma,EE1,EE2,EE3,EE4,EE5,EE6,EE7,EE8,EE9,EE10," +
+                   "EE11,EE12,EE13,EE14,EE15,EE16,EE17,EE18,EE19,EE20," +
+                   "EE21,EE22,EE23,EE24,EE25,EE26,EE27,EE28,EE29,EE30," +
+                   "EE31,EE32,EE33,EE34,EE35,EE36,EE37,EE38,EE39,EE40," +
+                   "EE41,EE42,EE43,EE44,EE45,EE46,EE47,EE48,EE49,EE50," +
+                   "EE51,EE52,EE53,EE54\n";
+            bw.write(temp);
             for(int x = 0; x < realPatterns.length; x++){
-                temp = "";
+                temp = "Firma " + counter + ",";
                 for(int y = 0; y < realPatterns[x].length; y++){
                     temp += realPatterns[x][y] + ",";
                 }
                 temp = temp.substring(0, temp.length()-1);
                 temp = temp + "\n";
                 bw.write(temp);
+                counter++;
             }
         
             for(int x = 0; x < 50; x++){
-                temp = "";    
+                temp = "Firma " + counter + ",";
                 for(int y = 0; y < 54; y++){
                     temp += syntheticPositive[x][y] + ",";
                 }
                 temp = temp.substring(0, temp.length()-1);
                 temp = temp + "\n";
                 bw.write(temp);
+                counter++;
             }
         
             for(int x = 0; x < 50; x++){
-                temp = "";
+                temp = "Firma " + counter + ",";
                 for(int y = 0; y < 54; y++){
                     temp += syntheticNegative[x][y] + ",";
                 }
                 temp = temp.substring(0, temp.length()-1);
                 temp = temp + "\n";
                 bw.write(temp);
+                counter++;
             }
             
             bw.flush();
